@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homework: Verb + Preposition Collocations</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <style>
+        /* -------------------- RESET & BASE -------------------- */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f1f5f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            color: #0b1a2e;
+        }
+
+        .presentation {
+            width: 100%;
+            max-width: 900px;
+            background: #ffffff;
+            border-radius: 40px;
+            box-shadow: 0 25px 60px rgba(0, 20, 40, 0.15);
+            overflow: hidden;
+            position: relative;
+            transition: box-shadow 0.3s;
+        }
+
+        .slides-wrapper {
+            position: relative;
+            min-height: 420px;
+        }
+
+        .slide {
+            display: none;
+            padding: 48px 52px 36px;
+            animation: fadeSlide 0.4s ease;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        @keyframes fadeSlide {
+            0% {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .slide-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: #3b6ea8;
+            background: #e6f0fa;
+            padding: 4px 14px;
+            border-radius: 30px;
+            margin-bottom: 16px;
+        }
+
+        .slide-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            color: #0b1a2e;
+            margin-bottom: 8px;
+        }
+
+        .slide-sub {
+            font-size: 1.05rem;
+            color: #4b5f73;
+            font-weight: 400;
+            margin-bottom: 28px;
+            border-left: 4px solid #3b6ea8;
+            padding-left: 18px;
+        }
+
+        .slide-sub.alt {
+            border-left-color: #d97747;
+        }
+
+        .task-instruction {
+            background: #f0f7fe;
+            border-radius: 18px;
+            padding: 16px 22px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            border-left: 5px solid #3b6ea8;
+        }
+
+        .task-instruction i {
+            color: #3b6ea8;
+            font-size: 1.2rem;
+            margin-top: 2px;
+        }
+
+        .task-instruction p {
+            font-size: 0.98rem;
+            color: #1a334f;
+            line-height: 1.5;
+        }
+
+        .task-instruction strong {
+            color: #0b1a2e;
+        }
+
+        /* -------------------- REFERENCE GRID (slide 1) -------------------- */
+        .colloc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-top: 8px;
+        }
+
+        .colloc-card {
+            background: #f8fafc;
+            border-radius: 18px;
+            padding: 14px 18px;
+            border: 1px solid #e2eaf2;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .colloc-card:hover {
+            border-color: #b0c9e0;
+            background: #f1f6fc;
+        }
+
+        .colloc-card .colloc-term {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: #0b1a2e;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .colloc-card .colloc-term i {
+            color: #3b6ea8;
+            font-size: 0.9rem;
+            width: 20px;
+        }
+
+        .colloc-card .colloc-def {
+            font-size: 0.9rem;
+            color: #4b5f73;
+            margin-top: 4px;
+            line-height: 1.5;
+        }
+
+        .colloc-card .colloc-example {
+            font-size: 0.85rem;
+            color: #1a334f;
+            background: #eef3f9;
+            padding: 2px 14px;
+            border-radius: 30px;
+            display: inline-block;
+            margin-top: 6px;
+            font-style: italic;
+        }
+
+        @media (max-width: 720px) {
+            .colloc-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* -------------------- TASK 1: GAP-FILL -------------------- */
+        .gap-fill-container {
+            background: #f8fafc;
+            border-radius: 24px;
+            padding: 20px 24px;
+            border: 1px solid #e2eaf2;
+            margin-top: 8px;
+        }
+
+        .gap-sentence {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 8px 12px;
+            padding: 10px 0;
+            font-size: 0.98rem;
+            line-height: 1.8;
+            border-bottom: 1px solid #e9edf2;
+        }
+
+        .gap-sentence:last-child {
+            border-bottom: none;
+        }
+
+        .gap-sentence .num {
+            font-weight: 700;
+            color: #3b6ea8;
+            min-width: 28px;
+            font-size: 0.85rem;
+        }
+
+        .gap-sentence .text {
+            color: #1a334f;
+        }
+
+        .gap-sentence .blank-select {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 30px;
+            border: 2px solid #c6d9f0;
+            background: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.92rem;
+            color: #0b1a2e;
+            transition: border-color 0.2s, background 0.2s;
+            min-width: 150px;
+        }
+
+        .gap-sentence .blank-select:focus {
+            border-color: #3b6ea8;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(59, 110, 168, 0.15);
+        }
+
+        .gap-sentence .blank-select:disabled {
+            opacity: 0.8;
+            cursor: not-allowed;
+        }
+
+        .gap-sentence .blank-select.correct {
+            border-color: #1f7b4d;
+            background: #eaf7f0;
+        }
+
+        .gap-sentence .blank-select.incorrect {
+            border-color: #b13e3e;
+            background: #fde8e6;
+        }
+
+        .gap-sentence .status-icon {
+            font-size: 1.1rem;
+            min-width: 24px;
+            text-align: center;
+        }
+
+        .gap-sentence .status-icon.correct {
+            color: #1f7b4d;
+        }
+        .gap-sentence .status-icon.incorrect {
+            color: #b13e3e;
+        }
+        .gap-sentence .status-icon.pending {
+            color: #8a9db0;
+        }
+
+        .gap-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+            align-items: center;
+        }
+
+        .btn-reset-gap {
+            background: transparent;
+            border: 1.5px solid #d0d9e5;
+            color: #4b5f73;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: 'Inter', sans-serif;
+        }
+        .btn-reset-gap:hover {
+            background: #eef3f9;
+            border-color: #b0c2d6;
+        }
+
+        .gap-summary {
+            margin-top: 12px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #0b1a2e;
+            padding: 8px 14px;
+            border-radius: 40px;
+            display: inline-block;
+        }
+        .gap-summary.success {
+            background: #dff0e8;
+            color: #1a5e3a;
+        }
+        .gap-summary.error {
+            background: #fde8e6;
+            color: #a13a3a;
+        }
+        .gap-summary.hidden {
+            display: none;
+        }
+
+        /* -------------------- NAVIGATION -------------------- */
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 52px 24px;
+            border-top: 1px solid #e9edf2;
+            background: #fafcff;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 30px;
+            background: #dce3ec;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            padding: 0;
+        }
+
+        .dot.active {
+            background: #3b6ea8;
+            width: 28px;
+        }
+        .dot:hover {
+            background: #8aaecf;
+            transform: scale(1.15);
+        }
+        .dot.active:hover {
+            background: #2a5a8a;
+            transform: scale(1);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-btn {
+            background: #eef3f9;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #1a334f;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .nav-btn:hover {
+            background: #dce7f3;
+            transform: translateY(-1px);
+        }
+        .nav-btn:active {
+            transform: translateY(0);
+        }
+
+        .nav-btn-primary {
+            background: #3b6ea8;
+            color: #fff;
+        }
+        .nav-btn-primary:hover {
+            background: #2a5a8a;
+        }
+        .nav-btn-primary:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .slide-counter {
+            font-size: 0.8rem;
+            color: #6f839a;
+            font-weight: 500;
+        }
+
+        /* -------------------- RESPONSIVE -------------------- */
+        @media (max-width: 720px) {
+            .slide {
+                padding: 32px 24px 24px;
+            }
+            .slide-title {
+                font-size: 1.7rem;
+            }
+            .gap-sentence {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 6px;
+            }
+            .gap-sentence .blank-select {
+                align-self: flex-start;
+            }
+            .nav-bar {
+                padding: 14px 24px 18px;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 12px;
+            }
+            .nav-buttons {
+                justify-content: center;
+            }
+            .dots {
+                justify-content: center;
+            }
+            .colloc-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 450px) {
+            .slide {
+                padding: 24px 16px 20px;
+            }
+            .slide-title {
+                font-size: 1.4rem;
+            }
+            .nav-btn {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+            .gap-sentence .blank-select {
+                min-width: 100px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="presentation">
+
+        <!-- ========== SLIDES ========== -->
+        <div class="slides-wrapper">
+
+            <!-- SLIDE 0 — TITLE -->
+            <div class="slide active" data-slide="0">
+                <span class="slide-badge"><i class="fas fa-home" style="margin-right:6px;"></i> Homework</span>
+                <h1 class="slide-title">Verb + Preposition Collocations</h1>
+                <div class="slide-sub">
+                    <i class="fas fa-puzzle-piece" style="color:#d97747;margin-right:8px;"></i>
+                    Learn and practice common verb-preposition pairs.
+                </div>
+
+                <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:24px;background:#f5f9fe;border-radius:24px;padding:24px 28px;border:1px solid #e0eaf5;">
+                    <div style="flex:1;min-width:160px;">
+                        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+                            <span style="font-size:1.8rem;">📘</span>
+                            <span style="font-weight:600;font-size:1.05rem;">What you'll do:</span>
+                        </div>
+                        <ul style="list-style:none;padding:0;font-size:0.95rem;color:#1a334f;line-height:2;">
+                            <li>✓ Study the collocations</li>
+                            <li>✓ Task: Fill in the blanks</li>
+                        </ul>
+                    </div>
+                    <div style="border-left:2px dashed #c6d9f0;padding-left:20px;flex:1;min-width:140px;">
+                        <div style="font-size:0.85rem;color:#4b5f73;font-weight:500;margin-bottom:4px;">💡 Collocations</div>
+                        <div style="display:flex;flex-wrap:wrap;gap:6px 10px;margin-top:4px;">
+                            <span style="background:#e6f0fa;padding:2px 14px;border-radius:30px;font-size:0.85rem;">come up to</span>
+                            <span style="background:#e6f0fa;padding:2px 14px;border-radius:30px;font-size:0.85rem;">go out with</span>
+                            <span style="background:#e6f0fa;padding:2px 14px;border-radius:30px;font-size:0.85rem;">listen to</span>
+                            <span style="background:#e6f0fa;padding:2px 14px;border-radius:30px;font-size:0.85rem;">look at</span>
+                            <span style="background:#e6f0fa;padding:2px 14px;border-radius:30px;font-size:0.85rem;">spend time on</span>
+                            <span style="background:#e6f0fa;padding:2px 14px;border-radius:30px;font-size:0.85rem;">talk to</span>
+                            <span style="background:#e6f0fa;padding:2px 14px;border-radius:30px;font-size:0.85rem;">wait for</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top:20px;font-size:0.9rem;color:#5d738b;display:flex;gap:20px;flex-wrap:wrap;">
+                    <span><i class="fas fa-clock" style="margin-right:6px;"></i> ~10 min</span>
+                    <span><i class="fas fa-pencil-alt" style="margin-right:6px;"></i> Self-study</span>
+                </div>
+            </div>
+
+            <!-- SLIDE 1 — COLLOCATION REFERENCE -->
+            <div class="slide" data-slide="1">
+                <span class="slide-badge"><i class="fas fa-graduation-cap" style="margin-right:6px;"></i> Reference</span>
+                <h2 class="slide-title">Verb + Preposition Collocations</h2>
+                <div class="slide-sub">
+                    <i class="fas fa-arrow-right" style="color:#d97747;margin-right:8px;"></i>
+                    Study these common collocations. You will use them in the task.
+                </div>
+
+                <div class="colloc-grid">
+                    <div class="colloc-card">
+                        <div class="colloc-term"><i class="fas fa-arrow-right"></i> come up to</div>
+                        <div class="colloc-def">To approach someone or something.</div>
+                        <div class="colloc-example">“She came up to me and asked for directions.”</div>
+                    </div>
+                    <div class="colloc-card">
+                        <div class="colloc-term"><i class="fas fa-calendar-alt"></i> go out with</div>
+                        <div class="colloc-def">To date someone; to have a romantic relationship.</div>
+                        <div class="colloc-example">“He is going out with a colleague from work.”</div>
+                    </div>
+                    <div class="colloc-card">
+                        <div class="colloc-term"><i class="fas fa-headphones"></i> listen to</div>
+                        <div class="colloc-def">To give attention to sound or someone speaking.</div>
+                        <div class="colloc-example">“Please listen to me carefully.”</div>
+                    </div>
+                    <div class="colloc-card">
+                        <div class="colloc-term"><i class="fas fa-eye"></i> look at</div>
+                        <div class="colloc-def">To direct your eyes towards something.</div>
+                        <div class="colloc-example">“Look at that beautiful painting.”</div>
+                    </div>
+                    <div class="colloc-card">
+                        <div class="colloc-term"><i class="fas fa-clock"></i> spend time on</div>
+                        <div class="colloc-def">To use time to do something.</div>
+                        <div class="colloc-example">“I don't want to spend too much time on this.”</div>
+                    </div>
+                    <div class="colloc-card">
+                        <div class="colloc-term"><i class="fas fa-comment"></i> talk to</div>
+                        <div class="colloc-def">To speak with someone.</div>
+                        <div class="colloc-example">“You should talk to your manager about it.”</div>
+                    </div>
+                    <div class="colloc-card">
+                        <div class="colloc-term"><i class="fas fa-hourglass-half"></i> wait for</div>
+                        <div class="colloc-def">To stay until someone or something arrives.</div>
+                        <div class="colloc-example">“I will wait for you at the station.”</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 2 — TASK: GAP-FILL -->
+            <div class="slide" data-slide="2">
+                <span class="slide-badge"><i class="fas fa-pen-fancy" style="margin-right:6px;"></i> Task</span>
+                <h2 class="slide-title">Fill in the blanks</h2>
+                <div class="slide-sub alt">
+                    <i class="fas fa-arrow-right" style="color:#d97747;margin-right:8px;"></i>
+                    Complete each sentence with the correct collocation from the box.
+                </div>
+
+                <div class="task-instruction">
+                    <i class="fas fa-info-circle"></i>
+                    <p>
+                        Each collocation is used <strong>once</strong>. Click a dropdown to get <strong>instant feedback</strong>!
+                    </p>
+                </div>
+
+                <div class="gap-fill-container">
+                    <!-- Word Bank (shuffled) -->
+                    <div id="wordBankContainer" style="display:flex;flex-wrap:wrap;gap:8px 14px;padding:10px 14px;background:#eef3f9;border-radius:40px;margin-bottom:14px;justify-content:center;font-size:0.9rem;font-weight:500;color:#0b1a2e;">
+                        <!-- injected by JS -->
+                    </div>
+
+                    <div id="gapSentences">
+                        <!-- injected by JS -->
+                    </div>
+
+                    <div class="gap-actions">
+                        <button class="btn-reset-gap" id="resetGapBtn"><i class="fas fa-undo-alt"></i> Reset</button>
+                        <span id="gapProgress" style="font-size:0.85rem;color:#6f839a;margin-left:auto;">0 / 7 answered</span>
+                    </div>
+
+                    <div id="gapSummary" class="gap-summary hidden"></div>
+                </div>
+            </div>
+
+        </div><!-- /slides-wrapper -->
+
+        <!-- ========== NAVIGATION ========== -->
+        <div class="nav-bar">
+            <div class="dots" id="dotsContainer">
+                <!-- dots injected by JS -->
+            </div>
+
+            <div class="nav-buttons">
+                <button class="nav-btn" id="prevSlide" aria-label="Previous slide">
+                    <i class="fas fa-chevron-left"></i> Back
+                </button>
+                <button class="nav-btn nav-btn-primary" id="nextSlide" aria-label="Next slide">
+                    Next <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <div class="slide-counter" id="slideCounter">1 / 3</div>
+        </div>
+
+    </div><!-- /presentation -->
+
+    <script>
+        // =====================================================================
+        //  DATA
+        // =====================================================================
+        const collocations = [
+            'come up to',
+            'go out with',
+            'listen to',
+            'look at',
+            'spend time on',
+            'talk to',
+            'wait for'
+        ];
+
+        const gapData = [
+            { id: 0, textBefore: 'I need to ', textAfter: ' the teacher and ask about the homework.', correct: 'come up to' },
+            { id: 1, textBefore: 'She is planning to ', textAfter: ' her colleague from work.', correct: 'go out with' },
+            { id: 2, textBefore: 'Please ', textAfter: ' me carefully.', correct: 'listen to' },
+            { id: 3, textBefore: ' ', textAfter: ' that picture. What do you see?', correct: 'look at' },
+            { id: 4, textBefore: 'I don\'t want to ', textAfter: ' this problem right now.', correct: 'spend time on' },
+            { id: 5, textBefore: 'You should ', textAfter: ' your colleagues more often.', correct: 'talk to' },
+            { id: 6, textBefore: 'I will ', textAfter: ' you at the station.', correct: 'wait for' }
+        ];
+
+        // =====================================================================
+        //  SLIDE MANAGEMENT
+        // =====================================================================
+        const slides = document.querySelectorAll('.slide');
+        const dotsContainer = document.getElementById('dotsContainer');
+        const prevBtn = document.getElementById('prevSlide');
+        const nextBtn = document.getElementById('nextSlide');
+        const counter = document.getElementById('slideCounter');
+        let current = 0;
+        const total = slides.length;
+
+        slides.forEach((s, i) => {
+            s.classList.toggle('active', i === 0);
+        });
+
+        function updateSlide(index) {
+            if (index < 0) index = 0;
+            if (index >= total) index = total - 1;
+
+            slides.forEach((s, i) => {
+                s.classList.toggle('active', i === index);
+            });
+
+            document.querySelectorAll('.dot').forEach((d, i) => {
+                d.classList.toggle('active', i === index);
+            });
+
+            counter.textContent = `${index + 1} / ${total}`;
+            prevBtn.disabled = (index === 0);
+            nextBtn.disabled = false;
+        }
+
+        function goTo(index) {
+            if (index < 0) index = 0;
+            if (index >= total) index = total - 1;
+            current = index;
+            updateSlide(current);
+        }
+
+        for (let i = 0; i < total; i++) {
+            const dot = document.createElement('button');
+            dot.className = 'dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('data-index', i);
+            dot.addEventListener('click', () => goTo(i));
+            dotsContainer.appendChild(dot);
+        }
+
+        prevBtn.addEventListener('click', () => {
+            if (current > 0) goTo(current - 1);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (current < total - 1) goTo(current + 1);
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                if (current > 0) goTo(current - 1);
+            }
+            if (e.key === 'ArrowRight') {
+                if (current < total - 1) goTo(current + 1);
+            }
+        });
+
+        updateSlide(0);
+
+        // =====================================================================
+        //  SHUFFLE HELPER
+        // =====================================================================
+        function shuffleArray(arr) {
+            const a = [...arr];
+            for (let i = a.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [a[i], a[j]] = [a[j], a[i]];
+            }
+            return a;
+        }
+
+        // =====================================================================
+        //  TASK: GAP-FILL
+        // =====================================================================
+        const wordBankContainer = document.getElementById('wordBankContainer');
+        const gapSentences = document.getElementById('gapSentences');
+        const resetGapBtn = document.getElementById('resetGapBtn');
+        const gapProgress = document.getElementById('gapProgress');
+        const gapSummary = document.getElementById('gapSummary');
+
+        let gapSelections = gapData.map(() => null);
+        let shuffledBank = shuffleArray(collocations);
+
+        function renderWordBank() {
+            wordBankContainer.innerHTML = '';
+            shuffledBank.forEach(coll => {
+                const span = document.createElement('span');
+                span.style.cssText =
+                    'background:#fff;padding:2px 14px;border-radius:30px;border:1.5px solid #c6d9f0;';
+                span.textContent = coll;
+                wordBankContainer.appendChild(span);
+            });
+        }
+
+        function updateGapProgress() {
+            let answered = 0;
+            let correct = 0;
+            gapData.forEach((item, idx) => {
+                const selected = gapSelections[idx];
+                if (selected !== null) {
+                    answered++;
+                    if (selected === item.correct) correct++;
+                }
+            });
+            gapProgress.textContent = `${answered} / ${gapData.length} answered`;
+
+            if (answered === gapData.length) {
+                gapSummary.classList.remove('hidden', 'success', 'error');
+                if (correct === gapData.length) {
+                    gapSummary.textContent = '🎉 Perfect! All blanks are correct!';
+                    gapSummary.className = 'gap-summary success';
+                } else {
+                    gapSummary.textContent = `✅ ${correct} correct, ❌ ${gapData.length - correct} incorrect. Click Reset to try again.`;
+                    gapSummary.className = 'gap-summary error';
+                }
+            } else {
+                gapSummary.classList.add('hidden');
+            }
+        }
+
+        function renderGap() {
+            gapSentences.innerHTML = '';
+
+            gapData.forEach((item, idx) => {
+                const selected = gapSelections[idx];
+                const isAnswered = selected !== null;
+
+                const div = document.createElement('div');
+                div.className = 'gap-sentence';
+
+                const numSpan = document.createElement('span');
+                numSpan.className = 'num';
+                numSpan.textContent = `${idx + 1}.`;
+                div.appendChild(numSpan);
+
+                const textSpan = document.createElement('span');
+                textSpan.className = 'text';
+                textSpan.textContent = item.textBefore;
+                div.appendChild(textSpan);
+
+                const select = document.createElement('select');
+                select.className = 'blank-select';
+                select.dataset.index = idx;
+
+                const defaultOpt = document.createElement('option');
+                defaultOpt.value = '';
+                defaultOpt.textContent = '— choose —';
+                select.appendChild(defaultOpt);
+
+                // Use shuffled bank for dropdown options
+                shuffledBank.forEach(coll => {
+                    const opt = document.createElement('option');
+                    opt.value = coll;
+                    opt.textContent = coll;
+                    select.appendChild(opt);
+                });
+
+                if (isAnswered) {
+                    select.value = selected;
+                    if (selected === item.correct) {
+                        select.classList.add('correct');
+                    } else {
+                        select.classList.add('incorrect');
+                    }
+                    select.disabled = true;
+                }
+
+                select.addEventListener('change', function() {
+                    const idx2 = parseInt(this.dataset.index);
+                    const val = this.value;
+                    if (val === '') return;
+                    gapSelections[idx2] = val;
+
+                    const correctAnswer = gapData[idx2].correct;
+                    if (val === correctAnswer) {
+                        this.classList.remove('incorrect');
+                        this.classList.add('correct');
+                    } else {
+                        this.classList.remove('correct');
+                        this.classList.add('incorrect');
+                    }
+                    this.disabled = true;
+
+                    updateGapProgress();
+                });
+
+                div.appendChild(select);
+
+                const afterSpan = document.createElement('span');
+                afterSpan.className = 'text';
+                afterSpan.textContent = item.textAfter;
+                div.appendChild(afterSpan);
+
+                const statusSpan = document.createElement('span');
+                statusSpan.className = 'status-icon pending';
+                if (isAnswered) {
+                    if (selected === item.correct) {
+                        statusSpan.textContent = '✅';
+                        statusSpan.className = 'status-icon correct';
+                    } else {
+                        statusSpan.textContent = '❌';
+                        statusSpan.className = 'status-icon incorrect';
+                    }
+                } else {
+                    statusSpan.textContent = '⏳';
+                    statusSpan.className = 'status-icon pending';
+                }
+                div.appendChild(statusSpan);
+
+                gapSentences.appendChild(div);
+            });
+
+            updateGapProgress();
+        }
+
+        function resetGap() {
+            gapSelections = gapData.map(() => null);
+            // Re-shuffle the bank on reset
+            shuffledBank = shuffleArray(collocations);
+            gapSummary.classList.add('hidden');
+            renderWordBank();
+            renderGap();
+        }
+
+        resetGapBtn.addEventListener('click', resetGap);
+
+        // Initial render
+        renderWordBank();
+        renderGap();
+    </script>
+
+</body>
+</html>
